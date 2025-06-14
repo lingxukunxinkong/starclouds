@@ -179,4 +179,154 @@
             background: linear-gradient(to right, var(--midnight-blue), var(--deep-blue));
             color: var(--accent-blue);
             border: 2px solid var(--border-color);
-            padding: 14px 4
+            padding: 14px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .confirm-btn:hover {
+            background: linear-gradient(to right, #001f3f, #003366);
+            box-shadow: 0 0 20px rgba(0, 168, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .confirm-btn:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 168, 255, 0.2), transparent);
+            transition: all 0.6s;
+        }
+        
+        .confirm-btn:hover:after {
+            left: 100%;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                padding: 25px;
+                margin: 20px auto;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            h2 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 星空背景 -->
+    <div class="stars" id="stars"></div>
+    
+    <!-- 内容容器 -->
+    <div class="container">
+        <div class="header">
+            <h1>星空论坛下载站用户声明</h1>
+            <p>星空之下，共享资源；责任分明，和谐共生</p>
+        </div>
+        
+        <h2>网站服务说明</h2>
+        <p>欢迎使用星空论坛下载站（下称"本网站"）。本网站是一个用户资源共享平台，为用户提供上传、发布、下载各类资源的服务。我们致力于打造一个开放、共享的星际交流空间。</p>
+        
+        <h2>免责声明（重要）</h2>
+        <div class="disclaimer">
+            <p><strong>特别提醒：</strong>本网站上展示、下载的所有资源均由用户自行上传发布，本站仅提供信息存储空间服务。</p>
+            
+            <p><strong>本网站郑重声明：</strong></p>
+            <p>1. <strong>对于用户上传的内容</strong>（包括但不限于软件、文档、音视频、图片等各种数字资源），<strong>本站不参与制作、编辑或修改</strong>这些内容，也<span class="highlight">不对其内容的合法性、准确性、真实性、完整性、安全性</span>承担任何责任。</p>
+            
+            <p>2. 用户上传的内容仅代表上传者个人行为，与本网站立场无关。用户需自行判断上传内容的合法性、安全性并承担由此产生的一切后果。</p>
+            
+            <p>3. 如果用户上传的内容侵犯了第三方的知识产权或其他合法权益，<strong>责任由上传者自行承担</strong>。本网站作为信息存储空间服务提供者，在接到权利人的合格通知后，将依法采取删除、屏蔽等必要措施。</p>
+            
+            <p>4. 对于因用户上传内容或下载使用资源而导致的任何直接或间接损失（包括但不限于软件故障、数据损失、病毒侵害等），本网站均不承担任何责任。</p>
+        </div>
+        
+        <h2>用户承诺与义务</h2>
+        <p>用户在本站上传资源时，即表示承诺并保证：</p>
+        <p>1. 上传内容不违反国家法律法规、不侵犯任何第三方合法权益；</p>
+        <p>2. 上传资源安全无毒，不包含任何恶意程序、病毒代码；</p>
+        <p>3. 上传内容不包含任何非法、暴力、色情等违规信息；</p>
+        <p>4. 已拥有上传内容的合法版权或已获得充分授权；</p>
+        <p>5. 对因上传内容引发的一切争议或纠纷独立承担全部责任。</p>
+        
+        <h2>资源使用指南</h2>
+        <p>1. 下载资源前，请先进行安全扫描，确保文件安全；</p>
+        <p>2. 遵守软件许可证条款，支持正版软件；</p>
+        <p>3. 如发现违规资源，请立即通过网站举报渠道反馈；</p>
+        <p>4. 用户应自觉遵守相关法律法规，文明使用网络资源。</p>
+        
+        <div class="button-container">
+            <button class="confirm-btn" onclick="alert('已确认并接受用户声明，感谢支持星空论坛！')">确认并接受声明</button>
+        </div>
+    </div>
+    
+    <script>
+        // 创建星空效果
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 200;
+            const shootingStarsCount = 3;
+            
+            // 创建普通星星
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // 随机位置
+                const left = Math.floor(Math.random() * 100);
+                const top = Math.floor(Math.random() * 100);
+                star.style.left = `${left}%`;
+                star.style.top = `${top}%`;
+                
+                // 随机大小
+                const size = Math.random() * 3 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // 随机闪烁延迟
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starsContainer.appendChild(star);
+            }
+            
+            // 创建流星
+            for (let i = 0; i < shootingStarsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('shooting-star');
+                
+                // 随机位置
+                const left = Math.floor(Math.random() * 30);
+                const top = Math.floor(Math.random() * 30);
+                star.style.left = `${left}%`;
+                star.style.top = `${top}%`;
+                
+                // 随机延迟
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        // 页面加载完成后创建星空
+        window.addEventListener('DOMContentLoaded', createStars);
+    </script>
+</body>
+</html>
